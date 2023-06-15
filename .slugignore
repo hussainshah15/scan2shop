@@ -11,3 +11,11 @@ tests/
 # Ignore IDE-specific files
 .vscode/
 .idea/
+
+# Ignore build artifacts
+build/
+dist/
+
+static/images/
+static/css/
+static/js/
