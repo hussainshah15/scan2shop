@@ -26,8 +26,8 @@ def extract_features(image_url):
 
 @app.route('/', methods=['GET'])
 def index():
-    # Render a template or provide instructions for GET request
-    return render_template('index.html')
+    # Return a message indicating that the app is running
+    return "Flask app is running!")
 
 @app.route('/similar-images', methods=['POST'])
 def find_similar_images():
