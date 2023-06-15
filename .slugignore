@@ -16,6 +16,11 @@ tests/
 build/
 dist/
 
+*.psd
+*.pdf
+/test
+/spec
+
 static/images/
 static/css/
 static/js/
