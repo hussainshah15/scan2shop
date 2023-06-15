@@ -20,7 +20,6 @@ itsdangerous==2.1.2
 jax==0.4.10
 Jinja2==3.1.2
 joblib==1.2.0
-keras==2.12.0
 libclang==16.0.0
 Markdown==3.4.3
 MarkupSafe==2.1.2
@@ -43,7 +42,6 @@ tensorboard==2.12.3
 tensorboard-data-server==0.7.0
 tensorflow==2.12.0
 tensorflow-estimator==2.12.0
-tensorflow==2.12.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.3.0
 threadpoolctl==3.1.0
