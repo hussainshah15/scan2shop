@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Similar Images</title>
+</head>
+<body>
+    <h1>Find Similar Images</h1>
+    <form id="imageForm">
+        <label for="imageUrls">Image URLs to Compare:</label>
+        <textarea name="imageUrls" id="imageUrls" rows="4" cols="50"></textarea><br><br>
+
+        <label for="targetUrls">Target Image URLs:</label>
+        <textarea name="targetUrls" id="targetUrls" rows="4" cols="50"></textarea><br><br>
+
+        <button type="button" onclick="findSimilarImages()">Find Similar Images</button>
+    </form>
+
+    <h2>Similar Images:</h2>
+    <div id="similarImages"></div>
+
+    <script>
+        function findSimilarImages() {
+            var imageUrls = document.getElementById('imageUrls').value.trim().split('\n');
+            var targetUrls = document.getElementById('targetUrls').value.trim().split('\n');
+
+            var data = {
+                array1_images: imageUrls,
+                array2_images: targetUrls
+            };
+
+            fetch('/similar-images', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                var similarImagesDiv = document.getElementById('similarImages');
+                similarImagesDiv.innerHTML = '';
+
+                if (result.similarImages.length === 0) {
+                    similarImagesDiv.innerHTML = 'No similar images found.';
+                } else {
+                    result.similarImages.forEach(imagePair => {
+                        var img1 = document.createElement('img');
+                        img1.src = imagePair[0];
+                        var img2 = document.createElement('img');
+                        img2.src = imagePair[1];
+
+                        similarImagesDiv.appendChild(img1);
+                        similarImagesDiv.appendChild(img2);
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
